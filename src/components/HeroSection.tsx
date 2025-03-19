@@ -1,8 +1,12 @@
 
 import { ArrowDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 export const HeroSection = () => {
+  const name = "John Doe";
+  const title = "Full-Stack Developer";
+  
   return (
     <section 
       id="home" 
@@ -15,6 +19,33 @@ export const HeroSection = () => {
       
       <div className="container mx-auto px-6 z-10">
         <div className="flex flex-col items-center text-center relative">
+          {/* Name Section integrated here */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="relative mb-8"
+          >
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg blur opacity-25"></div>
+            <div className="relative px-8 py-6 bg-white rounded-lg shadow-xl">
+              <h2 className="text-5xl md:text-7xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+                {name}
+              </h2>
+            </div>
+          </motion.div>
+          
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className={cn(
+              "inline-block px-4 py-1.5 bg-blue-50 rounded-full text-blue-600",
+              "text-sm md:text-base font-medium tracking-wider mb-6 shadow-sm"
+            )}
+          >
+            {title}
+          </motion.p>
+          
           <div className="inline-block px-3 py-1 bg-blue-50 rounded-full text-blue-600 text-xs font-medium tracking-wider mb-8 animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             FULL-STACK DEVELOPER
           </div>
@@ -27,7 +58,12 @@ export const HeroSection = () => {
             I build elegant, high-performance applications and websites with clean code and intuitive user experiences. Let's turn your ideas into reality.
           </p>
           
-          <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mt-10 flex flex-wrap justify-center gap-4"
+          >
             <a 
               href="#projects" 
               className={cn(
@@ -46,7 +82,19 @@ export const HeroSection = () => {
             >
               Contact Me
             </a>
-          </div>
+            <a 
+              href="#contact"
+              className="px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+            >
+              Get in Touch
+            </a>
+            <a 
+              href="#projects"
+              className="px-5 py-3 text-sm font-medium text-blue-600 bg-white border border-blue-200 rounded-lg hover:bg-blue-50 transition-colors shadow-sm"
+            >
+              View Projects
+            </a>
+          </motion.div>
           
           <a 
             href="#about" 
